@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.grid-header {
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+}
+.grid-footer{
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+}
+.home-page-background {
+    background-image: url(../../public/assets/home-background.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.services-page-background{
+    background-image: url(../../public/assets/services-background.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.text-shadow{
+    text-shadow: 0 1px 0 black;
+}
+
+@media screen and (max-width: 1280px) {
+    .grid-header{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .grid-footer{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+  }
