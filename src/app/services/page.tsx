@@ -48,8 +48,7 @@ const Services = async () => {
   } else {
     return (
       <div className="services-page-background">
-        <div className="min-h-[100vh] bg-black bg-opacity-80 flex flex-col justify-start items-center">
-          <h1 className="text-3xl text-white text-shadow m-16">Servicii</h1>
+        <div className="min-h-[100vh] bg-black bg-opacity-80 flex flex-col justify-center items-center">
           <h2 className="text-2xl text-white text-shadow text-center">
             Ooops! Momentan nu sunt servicii de afișat.
           </h2>

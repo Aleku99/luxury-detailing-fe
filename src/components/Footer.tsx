@@ -5,14 +5,15 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 
 const Footer = (): JSX.Element => {
   return (
-    <footer className="grid-footer justify-between items-center gap-6 bg-[#212529] min-h-[4rem] p-[1rem] xl:gap-0">
+    <footer className="grid-footer justify-between items-center gap-6 bg-black min-h-[4rem] p-[1rem] xl:gap-0">
       <a href="/">
-        <div className="flex flex-row justify-center items-center xl:justify-start">
+        <div className="w-[175px] h-[100px] relative flex flex-row justify-center items-center xl:justify-start">
           <Image
-            src="/assets/car-detailing.png"
+            src="/assets/logo.jpg"
             alt="Logo image"
-            width="100"
-            height="100"
+            fill
+            sizes="100px"
+            unoptimized={true}
           />
         </div>
       </a>

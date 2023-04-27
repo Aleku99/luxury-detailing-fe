@@ -21,7 +21,7 @@ export default function Home() {
               className="bg-[#212529] hover:bg-white hover:text-[#212529] text-white font-bold py-6 px-12 rounded-full transition-all duration-200"
               style={{ WebkitTapHighlightColor: "transparent" }}
             >
-              Gallery
+              Galerie
             </button>
           </Link>
           <Link
@@ -32,7 +32,7 @@ export default function Home() {
               className="bg-[#212529] hover:bg-white hover:text-[#212529] text-white font-bold py-6 px-12 rounded-full transition-all duration-200"
               style={{ WebkitTapHighlightColor: "transparent" }}
             >
-              Services
+              Servicii
             </button>
           </Link>
         </div>
