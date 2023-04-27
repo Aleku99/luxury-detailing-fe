@@ -4,7 +4,7 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ["localhost", "luxury-detailing.ro"],
+    domains: ["localhost", "luxurydetailing.ro"],
   },
 };
 
