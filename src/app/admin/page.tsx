@@ -10,7 +10,7 @@ const Admin = (): JSX.Element => {
   });
 
   return (
-    <div className="min-h-[100vh] bg-black flex flex-col justify-center items-center">
+    <div className="min-h-[100vh] p-8 bg-black flex flex-col justify-center items-center">
       <h1 className="text-white text-2xl text-center">
         Redirecționare către panoul de administrare...
       </h1>

@@ -33,11 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <link
-        rel="icon"
-        type="image/x-icon"
-        href="assets/car-detailing.png"
-      ></link>
+      <link rel="icon" type="image/x-icon" href="assets/logo.jpg"></link>
       <body>
         <Header />
         {children}

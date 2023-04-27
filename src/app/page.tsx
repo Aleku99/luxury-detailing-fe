@@ -4,7 +4,7 @@ import "./globals.css";
 export default function Home() {
   return (
     <div className="home-page-background">
-      <div className="min-h-[100vh] bg-black bg-opacity-80 flex flex-col justify-center items-center">
+      <div className="min-h-[100vh] p-8 bg-black bg-opacity-80 flex flex-col justify-center items-center">
         <h1 className="text-white text-3xl text-shadow text-center mb-8 mt-48">
           Luxury Detailing - Transformă-ți Mașina într-o Bijuterie pe Roti
         </h1>

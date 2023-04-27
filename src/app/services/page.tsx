@@ -19,7 +19,7 @@ const Services = async () => {
   if (services.length > 0) {
     return (
       <div className="services-page-background">
-        <div className="min-h-[100vh] bg-black bg-opacity-80 flex flex-col justify-start items-center ">
+        <div className="min-h-[100vh] p-8 bg-black bg-opacity-80 flex flex-col justify-start items-center ">
           <div className="grid grid-cols-2 gap-x-[10vw] text-white mt-16">
             <h2 className="text-2xl text-center">Proces</h2>
             <h2 className="text-2xl text-center">Preț (RON)</h2>
@@ -48,7 +48,7 @@ const Services = async () => {
   } else {
     return (
       <div className="services-page-background">
-        <div className="min-h-[100vh] bg-black bg-opacity-80 flex flex-col justify-center items-center">
+        <div className="min-h-[100vh] p-8 bg-black bg-opacity-80 flex flex-col justify-center items-center">
           <h2 className="text-2xl text-white text-shadow text-center">
             Ooops! Momentan nu sunt servicii de afișat.
           </h2>

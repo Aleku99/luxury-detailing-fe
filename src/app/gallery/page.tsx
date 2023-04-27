@@ -70,7 +70,7 @@ const Gallery = () => {
     );
   } else if (error || images.length === 0) {
     return (
-      <div className="min-h-[100vh] bg-black flex flex-col justify-center items-center">
+      <div className="min-h-[100vh] p-8 bg-black flex flex-col justify-center items-center">
         <h2 className="text-2xl text-white text-shadow text-center ">
           Ooops! Momentan nu avem nimic de afisat aici.
         </h2>
