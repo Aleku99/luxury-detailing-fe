@@ -6,8 +6,8 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 const Footer = (): JSX.Element => {
   return (
     <footer className="grid-footer justify-between items-center gap-6 bg-black min-h-[4rem] p-[1rem] xl:gap-0">
-      <a href="/">
-        <div className="w-[175px] h-[100px] relative flex flex-row justify-center items-center xl:justify-start">
+      <a href="/" style={{ WebkitTapHighlightColor: "transparent" }}>
+        <div className="my-0 mx-auto w-[175px] h-[100px] relative flex flex-row justify-center items-center xl:justify-start">
           <Image
             src="/assets/logo.jpg"
             alt="Logo image"
