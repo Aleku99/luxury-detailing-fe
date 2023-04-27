@@ -1,6 +1,6 @@
 export default function NotFound() {
   return (
-    <div className="min-h-[100vh] bg-[#393E46] flex flex-col items-center justify-center gap-8">
+    <div className="min-h-[100vh] bg-black flex flex-col items-center justify-center gap-8">
       <h1 className="text-white text-9xl">404</h1>
       <h2 className="text-white text-4xl xl:text-2xl">
         Oooops! Pagina pe care o cautati nu exista!
