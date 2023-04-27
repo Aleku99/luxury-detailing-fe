@@ -22,7 +22,7 @@ const Contact = () => {
   }, []);
 
   return (
-    <div className="min-h-[100vh] bg-[#393E46] flex flex-col justify-start items-center">
+    <div className="min-h-[100vh] bg-black flex flex-col justify-start items-center">
       <div className="h-[50vh] w-[100vw]" ref={mapContainer}></div>
       <h2 className="text-xl text-white text-center mt-16">Luxury Detailing</h2>
       <h2 className="text-xl text-white text-center">

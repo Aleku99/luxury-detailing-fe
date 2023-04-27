@@ -11,15 +11,16 @@ const Header = (): JSX.Element => {
     <header
       className={`${
         isBurgerOpen ? "h-[350px]" : ""
-      } grid-header bg-[#212529] min-h-[4rem] p-[1rem] transition-[height] easi-in-out duration-500 xl:h-auto `}
+      } grid-header bg-black min-h-[4rem] p-[1rem] transition-[height] easi-in-out duration-500 xl:h-auto `}
     >
       <a href="/" style={{ WebkitTapHighlightColor: "transparent" }}>
-        <div className="w-[100px] h-[100px] relative z-50">
+        <div className="w-[175px] h-[100px] relative z-50">
           <Image
-            src="/assets/car-detailing.png"
+            src="/assets/logo.jpg"
             alt="Logo image"
             fill
             sizes="100px"
+            unoptimized={true}
           />
         </div>
       </a>
@@ -27,7 +28,7 @@ const Header = (): JSX.Element => {
       <div
         className={` ${
           isBurgerOpen ? "top-32" : "top-[-200px]"
-        }  absolute flex flex-col justify-center items-center left-0 w-[100vw] text-white text-2xl gap-4 pb-8 transition-all duration-200 bg-[#212529] xl:static xl:flex xl:flex-row xl:justify-center xl:items-center xl:gap-12 xl:w-auto xl:pb-0`}
+        }  absolute flex flex-col justify-center items-center left-0 w-[100vw] text-white text-2xl gap-4 pb-8 transition-all duration-200 bg-black xl:static xl:flex xl:flex-row xl:justify-center xl:items-center xl:gap-12 xl:w-auto xl:pb-0`}
       >
         <a
           className={`hover:text-[#FF6000] duration-200 transition-colors ${
