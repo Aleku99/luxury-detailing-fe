@@ -36,9 +36,9 @@ export default function Home() {
             </button>
           </Link>
         </div>
-        <h1 className="text-shadow text-3xl text-white text-center m-8">
+        <h3 className="text-shadow text-3xl text-white text-center m-8">
           Despre noi
-        </h1>
+        </h3>
         <div></div>
         <p className=" flex flex-row justify-center items-center text-white text-shadow text-center text-lg mb-48 xl:w-[50%]">
           Bine ați venit pe site-ul nostru de detalii auto! Echipa noastră de
