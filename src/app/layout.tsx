@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 export const metadata = {
   title: "Luxury Detailing",
   description:
-    "Luxury Detailing provides professional car detailing services to restore and maintain the beauty of your vehicle. Contact us today for affordable and reliable auto detailing services.",
+    "Luxury Detailing este o companie stabilita in Caransebes ce oferă servicii profesionale de detaliere auto pentru a restaura și menține frumusețea vehiculului dumneavoastră.",
   keywords: [
     "car detailing",
     "auto detailing",
@@ -24,6 +24,7 @@ export const metadata = {
   ],
   creator: "Alexandru Loghin",
   authors: [{ name: "Alexandru Loghin", url: "https://alexandruloghin.com/" }],
+  robots: "index, follow",
 };
 
 export default function RootLayout({
@@ -32,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="ro">
       <link rel="icon" type="image/x-icon" href="assets/logo.jpg"></link>
       <body>
         <Header />

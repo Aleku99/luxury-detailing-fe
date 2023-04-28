@@ -24,13 +24,13 @@ const Contact = () => {
   return (
     <div className="min-h-[100vh] bg-black flex flex-col justify-start items-center">
       <div className="h-[50vh] w-[100vw]" ref={mapContainer}></div>
-      <h2 className="text-xl text-white text-center mt-16">Luxury Detailing</h2>
+      <h1 className="text-xl text-white text-center mt-16">Luxury Detailing</h1>
       <h2 className="text-xl text-white text-center">
         Strada Nicolae Titulescu Nr. 37, Caransebes
       </h2>
-      <h2 className="text-xl text-white text-center mb-16">
+      <h3 className="text-xl text-white text-center mb-16">
         <a href="tel:+40787415445">+40787415445</a>
-      </h2>
+      </h3>
     </div>
   );
 };
