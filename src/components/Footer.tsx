@@ -30,8 +30,19 @@ const Footer = (): JSX.Element => {
       <div className="flex flex-col justify-center items-center text-white">
         <h1 className="text-md text-white text-center">Urmăriți-ne</h1>
         <div className="flex flex-row gap-2">
-          <FacebookIcon fontSize="large" />
-          <InstagramIcon fontSize="large" />
+          <a
+            href="https://www.facebook.com/profile.php?id=100083361835160"
+            target="_blank"
+          >
+            <FacebookIcon fontSize="large" />
+          </a>
+
+          <a
+            href=" https://www.instagram.com/luxury.detailing.caransebes/?igshid=YmMyMTA2M2Y%3D"
+            target="_blank"
+          >
+            <InstagramIcon fontSize="large" />
+          </a>
         </div>
       </div>
     </footer>
