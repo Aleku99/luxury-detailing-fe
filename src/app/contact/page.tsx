@@ -28,9 +28,14 @@ const Contact = () => {
       <h2 className="text-xl text-white text-center">
         Strada Nicolae Titulescu Nr. 37, Caransebes
       </h2>
-      <h3 className="text-xl text-white text-center mb-16">
+      <h3 className="text-xl text-white text-center">
         <a href="tel:+40787415445">+40787415445</a>
       </h3>
+      <h4 className="text-xl text-white text-center mb-16">
+        <a href="mailto:luxury.detailing.caransebes@gmail.com">
+          luxury.detailing.caransebes@gmail.com
+        </a>
+      </h4>
     </div>
   );
 };
