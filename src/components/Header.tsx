@@ -37,7 +37,7 @@ const Header = (): JSX.Element => {
           style={{ WebkitTapHighlightColor: "transparent" }}
           href="/"
         >
-          Home
+          Acasă
         </a>
         <a
           className={`hover:text-[#FF6000] duration-200 transition-colors ${
