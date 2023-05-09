@@ -8,11 +8,6 @@ export const metadata = {
     "Luxury Detailing este o companie stabilita in Caransebes ce oferă servicii profesionale de detaliere auto pentru a restaura și menține frumusețea vehiculului dumneavoastră.",
   keywords: [
     "car detailing",
-    "auto detailing",
-    "paint correction",
-    "ceramic coating",
-    "engine detailing",
-    "headlight restoration",
     "Caransebes",
     "Romania",
     "detailing interior",
@@ -42,7 +37,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ro">
-      <link rel="icon" type="image/x-icon" href="assets/logo.jpg"></link>
+      <link rel="icon" type="image/x-icon" href="assets/logo.jpg" />
+      <link rel="canonical" href="https://www.luxurydetailing.ro/" />
+      <meta property="og:title" content="Luxury Detailing Caransebeș" />
+      <meta property="og:url" content="https://www.luxurydetailing.ro/" />
+      <meta
+        property="og:description"
+        content="Luxury Detailing este o companie stabilita in Caransebes ce oferă servicii profesionale de detaliere auto pentru a restaura și menține frumusețea vehiculului dumneavoastră."
+      />
+      <meta property="og:image" content="./assets/logo.png" />
       <body>
         <Header />
         {children}
