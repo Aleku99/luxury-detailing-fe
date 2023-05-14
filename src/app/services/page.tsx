@@ -1,21 +1,8 @@
 import noServicesPng from "../../../public/assets/no-services.png";
 import Image from "next/image";
+import { Service, services } from "@/lib/services";
 
-const getServices = async () => {
-  const url = `${process.env.NEXT_PUBLIC_DOMAIN}/api/services`;
-  try {
-    const res = await fetch(url, { cache: "no-store" });
-    const services = await res.json();
-    return services.data;
-  } catch (err) {
-    console.log(err);
-    return [];
-  }
-};
-
-const Services = async () => {
-  const services = await getServices();
-
+const Services = () => {
   if (services.length > 0) {
     return (
       <div className="services-page-background">
@@ -23,21 +10,21 @@ const Services = async () => {
           <div className="grid grid-cols-2 gap-x-[10vw] text-white mt-16">
             <h1 className="text-2xl text-center">Proces</h1>
             <h1 className="text-2xl text-center">Preț (RON)</h1>
-            {services.map((service: any, index: number) => (
+            {services.map((service: Service, index: number) => (
               <>
                 <h2
                   className={`text-2xl text-center mt-4 ${
                     index === services.length - 1 ? "mb-48" : "mb-4"
                   }`}
                 >
-                  {service.attributes.name}
+                  {service.name}
                 </h2>
                 <h2
                   className={`text-xl text-center mt-4 ${
                     index === services.length - 1 ? "mb-48" : "mb-4"
                   }`}
                 >
-                  {service.attributes.price}
+                  {service.price}
                 </h2>
               </>
             ))}
