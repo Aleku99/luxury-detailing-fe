@@ -82,7 +82,7 @@ const Gallery = () => {
               <ImageListItem key={index}>
                 <img
                   src={`${image}`}
-                  loading="eager"
+                  loading="lazy"
                   alt={`Gallery image ${index}`}
                   onClick={() => openImageViewer(index)}
                   style={{ cursor: "pointer" }}
