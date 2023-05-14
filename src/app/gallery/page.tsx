@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import noImageSvg from "../../../public/assets/no-photos.svg";
-import { ImageList, ImageListItem, fabClasses } from "@mui/material";
+import { ImageList, ImageListItem } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
 import ImageViewer from "react-simple-image-viewer";
 import { galleryImageNames } from "@/lib/galleryImageNames";
@@ -82,7 +82,6 @@ const Gallery = () => {
               <ImageListItem key={index}>
                 <img
                   src={`${image}`}
-                  srcSet={`${image}`}
                   loading="eager"
                   alt={`Gallery image ${index}`}
                   onClick={() => openImageViewer(index)}
