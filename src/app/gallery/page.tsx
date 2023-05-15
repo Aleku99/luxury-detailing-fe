@@ -12,10 +12,12 @@ const Gallery = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const [galleryCols, setGalleryCols] = useState(1);
+  const [page, setPage] = useState(4);
 
   const galleryImagesSrcs = galleryImageNames.map(
     (name) => `./assets/gallery/${name}`
   );
+  const imagesPerPage = 9;
 
   const openImageViewer = useCallback((index: number) => {
     setCurrentImage(index);
@@ -89,21 +91,50 @@ const Gallery = () => {
       return (
         <div className="min-h-[100vh] bg-black flex flex-col justify-start items-center">
           <ImageList gap={8} cols={galleryCols} variant="standard">
-            {galleryImagesSrcs.map((imageSrc: string, index: number) => (
-              <ImageListItem key={index}>
-                <img
-                  src={imageSrc}
-                  alt={`Gallery image ${index}`}
-                  onClick={() => openImageViewer(index)}
-                  style={{ cursor: "pointer" }}
-                />
-              </ImageListItem>
-            ))}
+            {galleryImagesSrcs
+              .slice(page * imagesPerPage, (page + 1) * imagesPerPage)
+              .map((imageSrc: string, index: number) => (
+                <ImageListItem key={index}>
+                  <img
+                    src={imageSrc}
+                    alt={`Gallery image ${index}`}
+                    onClick={() => openImageViewer(index)}
+                    style={{ cursor: "pointer" }}
+                  />
+                </ImageListItem>
+              ))}
           </ImageList>
+          <div className="flex flex-row gap-4 flex-wrap ">
+            {galleryImagesSrcs.map((img, index) => {
+              if (index % imagesPerPage === 0) {
+                return (
+                  <div
+                    key={index}
+                    className={`rounded-full text-xl ${
+                      page === index / imagesPerPage
+                        ? "bg-white text-black"
+                        : "bg-black text-white"
+                    } mt-8 mb-8 w-8 h-8 text-center `}
+                    onClick={() => {
+                      setIsLoading(true);
+                      setPage(index / imagesPerPage);
+                      document.querySelector("header")!.scrollIntoView();
+                    }}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {index / imagesPerPage + 1}
+                  </div>
+                );
+              }
+            })}
+          </div>
           {isViewerOpen && (
             <ImageViewer
               disableScroll
-              src={galleryImagesSrcs}
+              src={galleryImagesSrcs.slice(
+                page * imagesPerPage,
+                (page + 1) * imagesPerPage
+              )}
               currentIndex={currentImage}
               closeOnClickOutside={true}
               onClose={closeImageViewer}
