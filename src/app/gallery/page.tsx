@@ -131,10 +131,7 @@ const Gallery = () => {
           {isViewerOpen && (
             <ImageViewer
               disableScroll
-              src={galleryImagesSrcs.slice(
-                page * imagesPerPage,
-                (page + 1) * imagesPerPage
-              )}
+              src={galleryImagesSrcs}
               currentIndex={currentImage}
               closeOnClickOutside={true}
               onClose={closeImageViewer}
