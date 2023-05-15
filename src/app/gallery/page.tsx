@@ -11,6 +11,7 @@ const Gallery = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
+  const [galleryCols, setGalleryCols] = useState(1);
 
   const galleryImagesSrcs = galleryImageNames.map(
     (name) => `./assets/gallery/${name}`
@@ -36,7 +37,17 @@ const Gallery = () => {
         }
       });
     };
+    const handleResize = () => {
+      setGalleryCols(window.innerWidth < 1280 ? 1 : 3);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
     preloadImages(galleryImagesSrcs);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, [galleryImagesSrcs]);
 
   if (isLoading) {
@@ -74,7 +85,7 @@ const Gallery = () => {
     } else {
       return (
         <div className="min-h-[100vh] bg-black flex flex-col justify-start items-center">
-          <ImageList gap={8} cols={3} variant="standard">
+          <ImageList gap={8} cols={galleryCols} variant="standard">
             {galleryImagesSrcs.map((imageSrc: string, index: number) => (
               <ImageListItem key={index}>
                 <img
