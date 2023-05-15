@@ -27,6 +27,10 @@ const Gallery = () => {
     setIsViewerOpen(false);
   };
 
+  const handleResize = () => {
+    setGalleryCols(window.innerWidth < 1280 ? 1 : 3);
+  };
+
   useEffect(() => {
     const preloadImages = (imagesSrcs: string[]) => {
       imagesSrcs.map((imageSrc: string, index: number) => {
@@ -49,6 +53,7 @@ const Gallery = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [galleryImagesSrcs]);
+
 
   if (isLoading) {
     return (
@@ -90,6 +95,7 @@ const Gallery = () => {
               <ImageListItem key={index}>
                 <img
                   src={imageSrc}
+
                   alt={`Gallery image ${index}`}
                   onClick={() => openImageViewer(index)}
                   style={{ cursor: "pointer" }}
