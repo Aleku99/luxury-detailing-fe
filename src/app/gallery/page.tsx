@@ -12,6 +12,7 @@ const Gallery = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
+  const [galleryCols, setGalleryCols] = useState(1);
 
   const images = galleryImageNames.map(
     (imageName) => `./assets/gallery/${imageName}`
@@ -27,8 +28,18 @@ const Gallery = () => {
     setIsViewerOpen(false);
   };
 
+  const handleResize = () => {
+    setGalleryCols(window.innerWidth < 1280 ? 1 : 3);
+  };
+
   useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
     setIsLoading(false);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   if (isLoading) {
@@ -66,12 +77,11 @@ const Gallery = () => {
     } else {
       return (
         <div className="min-h-[100vh] bg-black flex flex-col justify-start items-center">
-          <ImageList gap={8} cols={3} variant="standard">
+          <ImageList gap={8} cols={galleryCols} variant="standard">
             {(images as string[]).map((image: string, index: number) => (
               <ImageListItem key={index}>
                 <img
                   src={`${image}`}
-                  srcSet={`${image}`}
                   loading="lazy"
                   alt={`Gallery image ${index}`}
                   onClick={() => openImageViewer(index)}
