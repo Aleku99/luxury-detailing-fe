@@ -12,7 +12,7 @@ const Gallery = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const [galleryCols, setGalleryCols] = useState(1);
-  const [page, setPage] = useState(4);
+  const [page, setPage] = useState(0);
 
   const galleryImagesSrcs = galleryImageNames.map(
     (name) => `./assets/gallery/${name}`
@@ -131,10 +131,7 @@ const Gallery = () => {
           {isViewerOpen && (
             <ImageViewer
               disableScroll
-              src={galleryImagesSrcs.slice(
-                page * imagesPerPage,
-                (page + 1) * imagesPerPage
-              )}
+              src={galleryImagesSrcs}
               currentIndex={currentImage}
               closeOnClickOutside={true}
               onClose={closeImageViewer}
