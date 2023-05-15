@@ -1,6 +1,5 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
-import Image from "next/image";
 import noImageSvg from "../../../public/assets/no-photos.svg";
 import { ImageList, ImageListItem } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
@@ -14,8 +13,8 @@ const Gallery = () => {
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const [galleryCols, setGalleryCols] = useState(1);
 
-  const images = galleryImageNames.map(
-    (imageName) => `./assets/gallery/${imageName}`
+  const galleryImagesSrcs = galleryImageNames.map(
+    (name) => `./assets/gallery/${name}`
   );
 
   const openImageViewer = useCallback((index: number) => {
@@ -28,19 +27,28 @@ const Gallery = () => {
     setIsViewerOpen(false);
   };
 
-  const handleResize = () => {
-    setGalleryCols(window.innerWidth < 1280 ? 1 : 3);
-  };
-
   useEffect(() => {
+    const preloadImages = (imagesSrcs: string[]) => {
+      imagesSrcs.map((imageSrc: string, index: number) => {
+        const image = new Image();
+        image.src = imageSrc;
+        if (index === imagesSrcs.length - 1) {
+          image.onload = () => setIsLoading(false);
+        }
+      });
+    };
+    const handleResize = () => {
+      setGalleryCols(window.innerWidth < 1280 ? 1 : 3);
+    };
+
     handleResize();
     window.addEventListener("resize", handleResize);
-    setIsLoading(false);
+    preloadImages(galleryImagesSrcs);
 
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [galleryImagesSrcs]);
 
   if (isLoading) {
     return (
@@ -57,7 +65,7 @@ const Gallery = () => {
       </div>
     );
   } else {
-    if (!images || (images as string[]).length === 0) {
+    if (!galleryImagesSrcs || galleryImagesSrcs.length === 0) {
       return (
         <div className="min-h-[100vh] p-8 bg-black flex flex-col justify-center items-center">
           <h2 className="text-2xl text-white text-shadow text-center ">
@@ -65,11 +73,11 @@ const Gallery = () => {
           </h2>
 
           <div className="relative w-[100px] h-[100px] md:w-[200px] md:h-[200px] mt-32 mb-48">
-            <Image
+            <img
               className="invert"
               src={noImageSvg}
               alt="Nu sunt imagini de afisat"
-              fill
+              style={{ width: "100%", height: "100%" }}
             />
           </div>
         </div>
@@ -78,11 +86,10 @@ const Gallery = () => {
       return (
         <div className="min-h-[100vh] bg-black flex flex-col justify-start items-center">
           <ImageList gap={8} cols={galleryCols} variant="standard">
-            {(images as string[]).map((image: string, index: number) => (
+            {galleryImagesSrcs.map((imageSrc: string, index: number) => (
               <ImageListItem key={index}>
                 <img
-                  src={`${image}`}
-                  loading="lazy"
+                  src={imageSrc}
                   alt={`Gallery image ${index}`}
                   onClick={() => openImageViewer(index)}
                   style={{ cursor: "pointer" }}
@@ -93,7 +100,7 @@ const Gallery = () => {
           {isViewerOpen && (
             <ImageViewer
               disableScroll
-              src={images}
+              src={galleryImagesSrcs}
               currentIndex={currentImage}
               closeOnClickOutside={true}
               onClose={closeImageViewer}
