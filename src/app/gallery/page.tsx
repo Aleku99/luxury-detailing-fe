@@ -98,7 +98,9 @@ const Gallery = () => {
                   <img
                     src={imageSrc}
                     alt={`Gallery image ${index}`}
-                    onClick={() => openImageViewer(index)}
+                    onClick={() =>
+                      openImageViewer(index + page * imagesPerPage)
+                    }
                     style={{ cursor: "pointer" }}
                   />
                 </ImageListItem>
@@ -114,7 +116,7 @@ const Gallery = () => {
                       page === index / imagesPerPage
                         ? "bg-white text-black"
                         : "bg-black text-white"
-                    } mt-8 mb-8 w-8 h-8 text-center `}
+                    } mt-8 mb-8 w-8 h-8 text-center hover:bg-white hover:text-black transition-all duration-200`}
                     onClick={() => {
                       setIsLoading(true);
                       setPage(index / imagesPerPage);
