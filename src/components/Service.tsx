@@ -2,7 +2,7 @@ import { Package } from "@/lib/services";
 
 export const Service = ({ title, services, price }: Package): JSX.Element => {
   return (
-    <div className="w-[40vw] rounded-xl  text-white flex flex-col gap-2 justify-start items-start ">
+    <div className="w-full rounded-xl  text-white flex flex-col gap-2 justify-start items-start ">
       <h1 className="text-2xl">{title}</h1>
       {services.map((service, index) => {
         return (

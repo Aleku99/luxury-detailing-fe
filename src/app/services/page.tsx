@@ -8,7 +8,7 @@ const Services = () => {
     return (
       <div className="services-page-background">
         <div className="min-h-[100vh] p-8 bg-black bg-opacity-80 flex flex-col justify-start items-center ">
-          <div className="grid grid-cols-2 gap-8 mt-32">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 py-32">
             {services.map((service, index) => (
               <Service
                 key={index}
