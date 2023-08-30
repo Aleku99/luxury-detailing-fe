@@ -34,9 +34,6 @@ const Gallery = () => {
       imagesSrcs.map((imageSrc: string, index: number) => {
         const image = new Image();
         image.src = imageSrc;
-        if (index === imagesSrcs.length - 1) {
-          image.onload = () => setIsLoading(false);
-        }
       });
     };
     const handleResize = () => {
@@ -49,8 +46,12 @@ const Gallery = () => {
     handleResize();
     window.addEventListener("resize", handleResize);
     preloadImages(galleryImagesSrcs);
+    const timeout = setTimeout(()=>{
+      setIsLoading(false)
+    }, 2000)
 
     return () => {
+      clearTimeout(timeout)
       window.removeEventListener("resize", handleResize);
     };
   }, [galleryImagesSrcs]);
