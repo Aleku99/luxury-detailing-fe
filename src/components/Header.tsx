@@ -14,7 +14,7 @@ const Header = (): JSX.Element => {
         isBurgerOpen ? "h-[400px]" : ""
       } grid-header bg-black min-h-[4rem] p-[1rem] transition-[height] easi-in-out duration-500 xl:h-auto `}
     >
-      <Link href="/" style={{ WebkitTapHighlightColor: "transparent" }}>
+      <Link href="/" style={{ WebkitTapHighlightColor: "transparent" }} onClick={()=>setIsBurgerOpen(false)}>
         <div className="w-[175px] h-[100px] relative z-50">
           <Image
             src="/assets/logo.jpg"
@@ -37,6 +37,7 @@ const Header = (): JSX.Element => {
           }`}
           style={{ WebkitTapHighlightColor: "transparent" }}
           href="/"
+          onClick={()=>setIsBurgerOpen(false)}
         >
           Acasă
         </Link>
@@ -46,6 +47,7 @@ const Header = (): JSX.Element => {
           }`}
           style={{ WebkitTapHighlightColor: "transparent" }}
           href="/gallery"
+          onClick={()=>setIsBurgerOpen(false)}
         >
           Galerie
         </Link>
@@ -55,6 +57,7 @@ const Header = (): JSX.Element => {
           }`}
           style={{ WebkitTapHighlightColor: "transparent" }}
           href="/services"
+          onClick={()=>setIsBurgerOpen(false)}
         >
           Servicii
         </Link>
@@ -64,6 +67,7 @@ const Header = (): JSX.Element => {
           }`}
           style={{ WebkitTapHighlightColor: "transparent" }}
           href="/contact"
+          onClick={()=>setIsBurgerOpen(false)}
         >
           Contact
         </Link>
