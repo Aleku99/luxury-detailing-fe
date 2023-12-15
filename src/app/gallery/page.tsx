@@ -6,6 +6,7 @@ import { useCallback, useEffect, useState } from "react";
 import ImageViewer from "react-simple-image-viewer";
 import { galleryImageNames } from "@/lib/galleryImageNames";
 import Image from "next/image";
+import { BLUR_DATA_URL } from "@/lib/constants";
 
 const Gallery = () => {
   const [currentImage, setCurrentImage] = useState(0);
@@ -39,7 +40,6 @@ const Gallery = () => {
     };
     handleResize();
     window.addEventListener("resize", handleResize);
-    // preloadImages(galleryImagesSrcs);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -79,6 +79,7 @@ const Gallery = () => {
                     openImageViewer(index + page * imagesPerPage)
                   }
                   placeholder="blur"
+                  blurDataURL={BLUR_DATA_URL}
                   style={{ cursor: "pointer" }}
                 />
               </ImageListItem>
