@@ -32,7 +32,7 @@ const Services = () => {
             <Image
               className="invert"
               src={noServicesPng}
-              alt="No services image"
+              alt="Nu sunt servicii de afisat"
               fill
             />
           </div>

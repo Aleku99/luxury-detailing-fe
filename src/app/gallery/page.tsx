@@ -6,16 +6,19 @@ import { useCallback, useEffect, useState } from "react";
 import ImageViewer from "react-simple-image-viewer";
 import { galleryImageNames } from "@/lib/galleryImageNames";
 import Image from "next/image";
+import { dynamicBlurDataUrl } from "@/lib/dynamicBlurDataUrl";
+import { ColorRing } from "react-loader-spinner";
 
 const Gallery = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const [galleryCols, setGalleryCols] = useState(1);
   const [page, setPage] = useState(0);
+  const [images, setImages] = useState<
+    Array<{ src: string; blurDataUrl: string }>
+  >([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  const galleryImagesSrcs = galleryImageNames.map(
-    (name) => `/assets/gallery/${name}`
-  );
   const imagesPerPage = 9;
 
   const openImageViewer = useCallback((index: number) => {
@@ -29,7 +32,6 @@ const Gallery = () => {
   };
 
   useEffect(() => {
-
     const handleResize = () => {
       if (window.innerWidth < 1280) {
         setGalleryCols(1);
@@ -37,22 +39,50 @@ const Gallery = () => {
         setGalleryCols(3);
       }
     };
+
+    const getImageBlurDataUrl = async () => {
+      const urls = await Promise.all(
+        galleryImageNames.map((name) =>
+          dynamicBlurDataUrl(`/assets/gallery/${name}`)
+        )
+      );
+      const newImages = urls.map((url, index) => ({
+        src: `/assets/gallery/${galleryImageNames[index]}`,
+        blurDataUrl: url,
+      }));
+      setImages(newImages);
+      setLoading(false);
+    };
     handleResize();
     window.addEventListener("resize", handleResize);
+    getImageBlurDataUrl();
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [galleryImagesSrcs]);
+  }, []);
 
-
-  if (!galleryImagesSrcs || galleryImagesSrcs.length === 0) {
+  if (loading) {
+    return (
+      <div className="min-h-[100vh] bg-black flex flex-col justify-center items-center">
+        <ColorRing
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="blocks-loading"
+          wrapperStyle={{}}
+          wrapperClass="blocks-wrapper"
+          colors={["white", "white", "white", "white", "white"]}
+        />
+      </div>
+    );
+  } else if (!images || images.length === 0) {
     return (
       <div className="min-h-[100vh] p-8 bg-black flex flex-col justify-center items-center">
         <h2 className="text-2xl text-white text-shadow text-center ">
           Ooops! Momentan nu avem imagini de afisat.
         </h2>
         <div className="relative w-[100px] h-[100px] md:w-[200px] md:h-[200px] mt-32 mb-48">
-          <img
+          <Image
             className="invert"
             src={noImageSvg}
             alt="Nu sunt imagini de afisat"
@@ -65,25 +95,25 @@ const Gallery = () => {
     return (
       <div className="min-h-[100vh] bg-black flex flex-col justify-start items-center">
         <ImageList gap={8} cols={galleryCols} variant="standard">
-          {galleryImagesSrcs
+          {images
             .slice(page * imagesPerPage, (page + 1) * imagesPerPage)
-            .map((imageSrc: string, index: number) => (
+            .map((image, index: number) => (
               <ImageListItem key={index}>
                 <Image
                   width="1000"
                   height="600"
-                  src={imageSrc}
+                  src={image.src}
                   alt={`Gallery image ${index}`}
-                  onClick={() =>
-                    openImageViewer(index + page * imagesPerPage)
-                  }
+                  onClick={() => openImageViewer(index + page * imagesPerPage)}
+                  placeholder="blur"
+                  blurDataURL={image.blurDataUrl}
                   style={{ cursor: "pointer" }}
                 />
               </ImageListItem>
             ))}
         </ImageList>
         <div className="flex flex-row gap-4 flex-wrap ">
-          {galleryImagesSrcs.map((img, index) => {
+          {images.map((img, index) => {
             if (index % imagesPerPage === 0) {
               return (
                 <div
@@ -108,7 +138,7 @@ const Gallery = () => {
         {isViewerOpen && (
           <ImageViewer
             disableScroll
-            src={galleryImagesSrcs}
+            src={images.map((img) => img.src)}
             currentIndex={currentImage}
             closeOnClickOutside={true}
             onClose={closeImageViewer}
